@@ -28,19 +28,19 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         String password = authentication.getCredentials().toString();
 
 
-        if ("".equals(username) || username.isEmpty()|| "".equals(password)|| password.isEmpty()) {
+        if ("".equals(username) || username.isEmpty() || "".equals(password) || password.isEmpty()) {
             throw new BadCredentialsException("Invalid Credentials");
         }
 
-        UserDetails userDetails=this.userService.loadUserByUsername(username);
-        try{
-         userDetails = this.userService.loadUserByUsername(username);
+        UserDetails userDetails = this.userService.loadUserByUsername(username);
+        try {
+            userDetails = this.userService.loadUserByUsername(username);
 
-        }
-        catch (UsernameNotFoundException exception){
+        } catch (UsernameNotFoundException exception) {
             System.out.println(exception.getMessage());
         }
-        if (userDetails.getUsername()==null)throw new UsernameNotFoundException("User with the given username doesn't exist.");
+        if (userDetails.getUsername() == null)
+            throw new UsernameNotFoundException("User with the given username doesn't exist.");
 
 
         if (!passwordEncoder.matches(password, userDetails.getPassword())) {

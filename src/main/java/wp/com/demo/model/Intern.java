@@ -2,10 +2,6 @@ package wp.com.demo.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -25,16 +21,16 @@ public class Intern {
     private String street;
     private String city;
     private String country;
-    private String intership_section;
+    private String internship_section;
     private String department;
 
 
-    private LocalDate intership_start;
-    private String intership_duration;
+    private LocalDate internship_start;
+    private String internship_duration;
 
     private String phone;
     private Integer projects;
-    private Integer intership_salary;
+    private Integer internship_salary;
     private Integer experience;
     private String imageSource;
 
@@ -45,7 +41,7 @@ public class Intern {
     }
 
     public Intern(String name, String surname, String embg, String email, String street, String city, String country,
-                  String intership_section, String department, LocalDate intership_start, String intership_duration, String phone, Integer projects, Integer intership_salary,
+                  String internship_section, String department, LocalDate internship_start, String internship_duration, String phone, Integer projects, Integer internship_salary,
                   Integer experience, String imageSource, Company companyId) {
         this.name = name;
         this.surname = surname;
@@ -54,13 +50,13 @@ public class Intern {
         this.street = street;
         this.city = city;
         this.country = country;
-        this.intership_section = intership_section;
+        this.internship_section = internship_section;
         this.department = department;
-        this.intership_start = intership_start;
-        this.intership_duration = intership_duration;
+        this.internship_start = internship_start;
+        this.internship_duration = internship_duration;
         this.phone = phone;
         this.projects = projects;
-        this.intership_salary = intership_salary;
+        this.internship_salary = internship_salary;
         this.experience = experience;
         this.imageSource = imageSource;
         this.companyId = companyId;

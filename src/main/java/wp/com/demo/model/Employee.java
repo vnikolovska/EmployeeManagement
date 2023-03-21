@@ -2,12 +2,9 @@ package wp.com.demo.model;
 
 
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 
 @Data
@@ -21,7 +18,7 @@ public class Employee {
     private String company;
     private String name;
     private String surname;
-    private String Embg;
+    private String embg;
     private String email;
     private String street;
     private String city;
@@ -45,24 +42,24 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee( Company companyId,String name, String surname,String imageSource, String embg, String email, String street, String city, String country, String jobTitle, String department, LocalDate employmentDate, String status, String phone, Integer projects, Integer salary, Integer experience) {
+    public Employee(Company companyId, String name, String surname, String imageSource, String embg, String email, String street, String city, String country, String jobTitle, String department, LocalDate employmentDate, String status, String phone, Integer projects, Integer salary, Integer experience) {
 
         this.name = name;
         this.surname = surname;
-        Embg = embg;
+        this.embg = embg;
         this.email = email;
         this.street = street;
         this.city = city;
         this.country = country;
         this.jobTitle = jobTitle;
         this.department = department;
-        this.companyId=companyId;
+        this.companyId = companyId;
         this.employmentDate = employmentDate;
         this.status = status;
         this.phone = phone;
         this.projects = projects;
         this.salary = salary;
         this.experience = experience;
-        this.imageSource=imageSource;
+        this.imageSource = imageSource;
     }
 }

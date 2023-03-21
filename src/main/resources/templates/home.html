@@ -56,13 +56,12 @@
                 <li><a href="/" class="smoothScroll">Home</a></li>
 
 
-                    <th:block sec:authorize="hasRole('ROLE_ADMIN')">
-                        <li><a href="/manage-companies" class="smoothScroll">Manage companies</a></li>
-                    </th:block>
-                    <th:block sec:authorize="hasRole('ROLE_USER')">
-                        <li><a href="/manage-companies" class="smoothScroll">View companies</a></li>
-                    </th:block>
-
+                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                    <li><a href="/manage-companies" class="smoothScroll">Manage companies</a></li>
+                </th:block>
+                <th:block sec:authorize="hasRole('ROLE_USER')">
+                    <li><a href="/manage-companies" class="smoothScroll">View companies</a></li>
+                </th:block>
 
 
                 <li><a href="/about-us" class="smoothScroll">About us</a></li>

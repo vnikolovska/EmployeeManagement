@@ -9,7 +9,7 @@
                                 <img th:src="${intern.getImageSource()}" alt="personImage">
                             </div>
                             <!--              <h5 class="mb-1 text-white"  ></h5>-->
-                            <h6 class="text-light" th:text="${intern.getName()} + ${intern.getSurname}" > </h6>
+                            <h6 class="text-light" th:text="${intern.getName()} + ${intern.getSurname}"></h6>
 
                         </div>
                         <div class="card-body">
@@ -19,8 +19,8 @@
                                         <i class="fa fa-phone-square"></i>
                                     </div>
                                     <div class="list-details">
-                                        <span th:text="${intern.getPhone()}" ></span><br/>
-                                        <small >Mobile Phone</small>
+                                        <span th:text="${intern.getPhone()}"></span><br/>
+                                        <small>Mobile Phone</small>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
@@ -30,7 +30,7 @@
                                     </div>
                                     <div class="list-details">
                                         <span th:text="${intern.getEmail()}"></span><br/>
-                                        <small >Email Address</small>
+                                        <small>Email Address</small>
                                     </div>
                                 </li>
                                 <li class="list-group-item">
@@ -45,16 +45,16 @@
                             </ul>
                             <div class="row text-center mt-4">
                                 <div class="col p-2">
-                                    <h4 class="mb-1 line-height-5" th:text="${intern.getProjects()}" ></h4>
+                                    <h4 class="mb-1 line-height-5" th:text="${intern.getProjects()}"></h4>
                                     <small class="mb-0 font-weight-bold">Projects</small>
                                 </div>
                                 <div class="col p-2">
-                                    <h4 class="mb-1 line-height-5"  th:text="${intern.getExperience()}"></h4>
+                                    <h4 class="mb-1 line-height-5" th:text="${intern.getExperience()}"></h4>
                                     <small class="mb-0 font-weight-bold">Experience</small>
                                 </div>
                                 <div class="col p-2">
-                                    <h4 class="mb-1 line-height-5" th:text="${intern.getIntership_salary()}"  ></h4>
-                                    <small class="mb-0 font-weight-bold" >Internship Salary</small>
+                                    <h4 class="mb-1 line-height-5" th:text="${intern.getIntership_salary()}"></h4>
+                                    <small class="mb-0 font-weight-bold">Internship Salary</small>
                                 </div>
                             </div>
                         </div>
@@ -67,10 +67,12 @@
                     <div class="card-body">
                         <ul class="nav nav-pills nav-pills-primary nav-justified">
                             <li class="nav-item">
-                                <a href="#profile" data-url="/profile" data-toggle="tab" class="nav-link active "><i class="icon-user"></i> <span class="hidden-xs">Profile</span></a>
+                                <a href="#profile" data-url="/profile" data-toggle="tab" class="nav-link active "><i
+                                        class="icon-user"></i> <span class="hidden-xs">Profile</span></a>
                             </li>
                             <li class="nav-item">
-                                <a href="#edit" data-url="/edit" data-toggle="tab" class="nav-link"><i class="icon-note"></i> <span class="hidden-xs">Edit</span></a>
+                                <a href="#edit" data-url="/edit" data-toggle="tab" class="nav-link"><i
+                                        class="icon-note"></i> <span class="hidden-xs">Edit</span></a>
                             </li>
                         </ul>
 
@@ -97,7 +99,6 @@
                                         </div>
 
 
-
                                     </div>
 
 
@@ -113,23 +114,24 @@
                                         </div>
                                         <div>
                                             <h4>Internship start</h4>
-                                            <p th:text="${intern.getIntership_start()}" >
+                                            <p th:text="${intern.getIntership_start()}">
                                             </p>
                                         </div>
 
                                     </div>
 
 
-
                                 </div>
                                 <!--/row-->
                             </div>
-                            <div class="tab-pane" id="edit" >
+                            <div class="tab-pane" id="edit">
 
-                                <form th:action="@{'/intern-profile/add/{id}'(id=${intern.getId()})}" method="POST"  enctype="multipart/form-data">
+                                <form th:action="@{'/intern-profile/add/{id}'(id=${intern.getId()})}" method="POST"
+                                      enctype="multipart/form-data">
 
                                     <!--                            <form action="/employee-profile/add" method="POST" th:object="${employee}" enctype="multipart/form-data">-->
-                                    <input id="id" type="hidden" name="id" th:value="(${intern} != null ? ${intern.getId()} : '')">
+                                    <input id="id" type="hidden" name="id"
+                                           th:value="(${intern} != null ? ${intern.getId()} : '')">
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">First name</label>
                                         <div class="col-lg-9">
@@ -152,7 +154,8 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Phone Number</label>
                                         <div class="col-lg-9 input-group-lg">
-                                            <input class="form-control" type="number" th:value="(${intern} != null ? ${intern.getPhone()} : '')"
+                                            <input class="form-control" type="number"
+                                                   th:value="(${intern} != null ? ${intern.getPhone()} : '')"
                                                    name="phone"
                                                    placeholder="Enter company name">
                                         </div>
@@ -160,7 +163,8 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Email</label>
                                         <div class="col-lg-9 input-group-lg">
-                                            <input class="form-control" type="email" th:value="(${intern} != null ? ${intern.getEmail()} : '')"
+                                            <input class="form-control" type="email"
+                                                   th:value="(${intern} != null ? ${intern.getEmail()} : '')"
                                                    placeholder="Enter company name"
                                                    name="email">
                                         </div>
@@ -168,8 +172,9 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Change profile</label>
                                         <div class="col-lg-9 input-group-lg">
-                                            <input class="form-control" type="file"   accept="image/png, image/jpeg"
-                                                   name="personImage" th:src="(${intern} != null ? ${intern.getImageSource()} : '')">
+                                            <input class="form-control" type="file" accept="image/png, image/jpeg"
+                                                   name="personImage"
+                                                   th:src="(${intern} != null ? ${intern.getImageSource()} : '')">
                                             <!--                                <img th:src="${employee.getImageSource()}" alt="image" id="blah" name="personImage"-->
                                             <!--                                >-->
 
@@ -177,32 +182,36 @@
                                     </div>
 
 
-
-                                    < <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label form-control-label">Internship Section</label>
-                                    <div class="col-lg-9 input-group-lg">
-                                        <input class="form-control" th:value="(${intern} != null ? ${intern.getIntership_section()} : '')"
-                                               name="internship_section" placeholder="Enter company name">
+                                    <
+                                    <div class="form-group row">
+                                        <label class="col-lg-3 col-form-label form-control-label">Internship
+                                            Section</label>
+                                        <div class="col-lg-9 input-group-lg">
+                                            <input class="form-control"
+                                                   th:value="(${intern} != null ? ${intern.getIntership_section()} : '')"
+                                                   name="internship_section" placeholder="Enter company name">
+                                        </div>
                                     </div>
-                                </div>
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Address</label>
                                         <div class="col-lg-9 mb-4 input-group-lg">
-                                            <input class="form-control" type="text" th:value="(${intern} != null ? ${intern.getStreet()} : '')"
+                                            <input class="form-control" type="text"
+                                                   th:value="(${intern} != null ? ${intern.getStreet()} : '')"
                                                    name="street" placeholder="Enter street">
                                         </div>
 
 
-
                                         <label class="col-lg-3 col-form-label form-control-label"></label>
                                         <div class="col-lg-6 input-group-lg">
-                                            <input class="form-control" type="text" th:value="(${intern} != null ? ${intern.getCity()} : '')"
+                                            <input class="form-control" type="text"
+                                                   th:value="(${intern} != null ? ${intern.getCity()} : '')"
                                                    placeholder="Enter city"
                                                    name="city">
                                         </div>
 
                                         <div class="col-lg-3 input-group-lg">
-                                            <input class="form-control" type="text" th:value="(${intern} != null ? ${intern.getCountry()} : '')"
+                                            <input class="form-control" type="text"
+                                                   th:value="(${intern} != null ? ${intern.getCountry()} : '')"
                                                    placeholder="Enter country"
                                                    name="country">
                                         </div>
@@ -210,14 +219,16 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label">Department</label>
                                         <div class="col-lg-9 input-group-lg">
-                                            <input class="form-control" type="text" th:value="(${intern} != null ? ${intern.getDepartment()} : '')"
+                                            <input class="form-control" type="text"
+                                                   th:value="(${intern} != null ? ${intern.getDepartment()} : '')"
                                                    placeholder="Enter department"
                                                    name="department">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Internship start</label>
+                                        <label class="col-lg-3 col-form-label form-control-label">Internship
+                                            start</label>
                                         <div class="col-lg-9 input-group-lg">
                                             <input class="form-control" type="date"
 
@@ -242,7 +253,8 @@
 
 
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Internship Salary</label>
+                                        <label class="col-lg-3 col-form-label form-control-label">Internship
+                                            Salary</label>
                                         <div class="col-lg-9 input-group-lg">
                                             <input class="form-control" type="text"
                                                    id="salary"
@@ -276,7 +288,8 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Internship duration</label>
+                                        <label class="col-lg-3 col-form-label form-control-label">Internship
+                                            duration</label>
                                         <div class="col-lg-9 input-group-lg">
                                             <input class="form-control" type="number"
                                                    id="projects"
@@ -292,7 +305,8 @@
                                         <br/>
                                         <label class="col-lg-3 col-form-label form-control-label" type="hidden"></label>
                                         <div class="col-lg-9 float-right">
-                                            <a th:href="@{'/intern-profile/{id}'(id=${intern.getId()})}"type="reset" class="btn btn-dark" value="Cancel">Cancel</a>
+                                            <a th:href="@{'/intern-profile/{id}'(id=${intern.getId()})}" type="reset"
+                                               class="btn btn-dark" value="Cancel">Cancel</a>
                                             <button id="submit" type="submit" class="btn btn-dark">Save</button>
 
                                         </div>

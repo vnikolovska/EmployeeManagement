@@ -1,24 +1,18 @@
 package wp.com.demo.web.controller;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import wp.com.demo.model.Company;
 import wp.com.demo.model.Employee;
-import wp.com.demo.model.User;
-import wp.com.demo.repository.EmployeeRepository;
 import wp.com.demo.service.CompanyService;
 import wp.com.demo.service.EmployeeService;
-import wp.com.demo.service.UserService;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/employee-profile")
@@ -31,7 +25,7 @@ public class EmployeeProfileController {
     private final CompanyService companyService;
 
 
-    public EmployeeProfileController(EmployeeService employeeService,CompanyService companyService) {
+    public EmployeeProfileController(EmployeeService employeeService, CompanyService companyService) {
         this.employeeService = employeeService;
         this.companyService = companyService;
 
@@ -51,10 +45,7 @@ public class EmployeeProfileController {
         return "master-template";
 
 
-
     }
-
-
 
 
     @GetMapping("/edit/{id}")
@@ -68,7 +59,6 @@ public class EmployeeProfileController {
         }
         return "redirect:/employee?errror=EmployeeNotFound";
     }
-
 
 
     @PostMapping("/add/{id}")
@@ -91,31 +81,28 @@ public class EmployeeProfileController {
             @RequestParam Integer salary,
             @RequestParam Integer experience,
             @RequestParam("personImage") MultipartFile profilePicture) throws IOException {
-        Employee employee=this.employeeService.findById(id).get();
-        Long idCompany=employee.getCompanyId().getId();
+        Employee employee = this.employeeService.findById(id).get();
+        Long idCompany = employee.getCompanyId().getId();
         Company company = this.companyService.findById(idCompany).get();
 
-                if (!profilePicture.isEmpty()) {
-                    File picture_target = new File(profilePicture.getOriginalFilename());
+        if (!profilePicture.isEmpty()) {
+            File picture_target = new File(profilePicture.getOriginalFilename());
 //                    (targetFolderImagePPPath + request.getRemoteUser() + "." + profilePicture.getOriginalFilename().split("\\.")[1]);
-                    if (picture_target.exists()) {
-                    picture_target.delete();
+            if (picture_target.exists()) {
+                picture_target.delete();
 
-                    }
-                    if (id != null) {
-                        this.employeeService.edit(id,company, name, surname, profilePicture, "../ProfilePictures/"+picture_target.getName(), embg, email, street, city, country, jobTitle, department, employmentDate, status,
-                                phone, projects, salary, experience);
-                    }
-
-                }
-             else {
-
-                this.employeeService.save(company,name, surname, profilePicture, "../ProfilePictures/", embg, email, street, city, country, jobTitle, department, employmentDate, status,
+            }
+            if (id != null) {
+                this.employeeService.edit(id, company, name, surname, profilePicture, "../ProfilePictures/" + picture_target.getName(), embg, email, street, city, country, jobTitle, department, employmentDate, status,
                         phone, projects, salary, experience);
             }
-            return "redirect:/employee-profile/{id}";
 
+        } else {
 
+            this.employeeService.save(company, name, surname, profilePicture, "../ProfilePictures/", embg, email, street, city, country, jobTitle, department, employmentDate, status,
+                    phone, projects, salary, experience);
+        }
+        return "redirect:/employee-profile/{id}";
 
 
     }

@@ -15,12 +15,11 @@ body {
 }
 
 
-
 /*---------------------------------------
    TYPOGRAPHY
 -----------------------------------------*/
 
-h1,h2,h3,h4,h5,h6 {
+h1, h2, h3, h4, h5, h6 {
     font-weight: 300;
     line-height: normal;
 }
@@ -42,12 +41,11 @@ p {
 }
 
 
-
 /*---------------------------------------
    GENERAL
 -----------------------------------------*/
 
-html{
+html {
     -webkit-font-smoothing: antialiased;
 }
 
@@ -68,7 +66,7 @@ a:hover, a:active, a:focus {
     outline: none;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
@@ -94,8 +92,8 @@ footer {
 }
 
 .overlay {
-    background: #536976;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #292E49, #536976);  /* Chrome 10-25, Safari 5.1-6 */
+    background: #536976; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #292E49, #536976); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #292E49, #536976); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     opacity: 0.9;
     position: absolute;
@@ -141,7 +139,6 @@ footer {
 }
 
 
-
 /*---------------------------------------
    BUTTONS
 -----------------------------------------*/
@@ -162,7 +159,6 @@ footer {
     background: #202020;
     color: #ffffff;
 }
-
 
 
 /*---------------------------------------
@@ -207,13 +203,16 @@ footer {
 }
 
 @-webkit-@keyframes spinner {
-    to {transform: rotate(360deg);}
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes spinner {
-    to {transform: rotate(360deg);}
+    to {
+        transform: rotate(360deg);
+    }
 }
-
 
 
 /*---------------------------------------
@@ -278,7 +277,7 @@ footer {
     border-color: transparent;
 }
 
-@media(min-width:768px) {
+@media (min-width: 768px) {
     .custom-navbar {
         border-bottom: 0;
         background: 0 0;
@@ -304,7 +303,6 @@ footer {
         color: #ffffff;
     }
 }
-
 
 
 /*---------------------------------------
@@ -367,11 +365,11 @@ footer {
     border-bottom: 0;
 }
 
-#feature .nav>li>a {
+#feature .nav > li > a {
     padding: 8px 0;
 }
 
-#feature .nav-tabs>li>a {
+#feature .nav-tabs > li > a {
     color: #999999;
     font-size: 18px;
     border: 0;
@@ -380,16 +378,16 @@ footer {
     margin-right: 35px;
 }
 
-#feature .nav-tabs>li.active>a,
-#feature .nav-tabs>li.active>a:focus,
-#feature .nav-tabs>li.active>a:hover {
+#feature .nav-tabs > li.active > a,
+#feature .nav-tabs > li.active > a:focus,
+#feature .nav-tabs > li.active > a:hover {
     background: transparent;
     color: #202020;
     border-bottom: 3px solid #29ca8e;
 }
 
-#feature .nav>li>a:focus,
-#feature .nav>li>a:hover {
+#feature .nav > li > a:focus,
+#feature .nav > li > a:hover {
     background: transparent;
     border-bottom: 3px solid #29ca8e;
     color: #202020;
@@ -411,7 +409,6 @@ footer {
     position: absolute;
     bottom: -27em;
 }
-
 
 
 /*---------------------------------------
@@ -464,7 +461,9 @@ footer {
     padding: 40px;
 }
 
-.team-info h2 {margin: 0;}
+.team-info h2 {
+    margin: 0;
+}
 
 .team-info small {
     display: block;
@@ -475,7 +474,6 @@ footer {
 .team-thumb img {
     width: 100%;
 }
-
 
 
 /*---------------------------------------
@@ -545,7 +543,6 @@ footer {
 }
 
 
-
 /*---------------------------------------
     PRICING
 -----------------------------------------*/
@@ -602,7 +599,6 @@ footer {
     right: 0;
     display: inline-block;
 }
-
 
 
 /*---------------------------------------
@@ -694,7 +690,6 @@ footer {
 }
 
 
-
 /*---------------------------------------
    RESPONSIVE STYLES
 -----------------------------------------*/
@@ -727,7 +722,7 @@ footer {
         padding-left: 15px;
     }
 
-    #feature .nav-tabs>li>a {
+    #feature .nav-tabs > li > a {
         font-size: 16px;
         margin-right: 20px;
     }
@@ -855,9 +850,9 @@ footer {
     padding-bottom: 10px;
 }
 
-body{
-    margin-top:20px;
-    background:#eee;
+body {
+    margin-top: 20px;
+    background: #eee;
 }
 
 .avatar {
@@ -969,7 +964,7 @@ body{
     -moz-border-radius: 2%;
     -webkit-border-radius: 2%;
     border-radius: 2%;
-    box-shadow: 5px 5px 0 rgba(0,0,0,0.08);
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.08);
 }
 
 .profile .profile-body {
@@ -1003,6 +998,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
     font-family: 'Open Sans', sans-serif;
 }
+
 h2 {
     font-size: 24px;
     line-height: 33px;
@@ -1012,17 +1008,19 @@ p, li, li a {
     color: #555;
 }
 
-body{margin-top:20px;}
+body {
+    margin-top: 20px;
+}
 
 .comment-wrapper .panel-body {
-    max-height:650px;
-    overflow:auto;
+    max-height: 650px;
+    overflow: auto;
 }
 
 .comment-wrapper .media-list .media img {
-    width:64px;
-    height:64px;
-    border:2px solid #e5e7e8;
+    width: 64px;
+    height: 64px;
+    border: 2px solid #e5e7e8;
 }
 
 .comment-wrapper .media-list .media {
@@ -1038,14 +1036,17 @@ body {
     position: relative;
     height: 100%;
 }
+
 .account-settings .user-profile {
     margin: 0 0 1rem 0;
     padding-bottom: 1rem;
     text-align: center;
 }
+
 .account-settings .user-profile .user-avatar {
     margin: 0 0 1rem 0;
 }
+
 .account-settings .user-profile .user-avatar img {
     width: 90px;
     height: 90px;
@@ -1053,26 +1054,32 @@ body {
     -moz-border-radius: 100px;
     border-radius: 100px;
 }
+
 .account-settings .user-profile h5.user-name {
     margin: 0 0 0.5rem 0;
 }
+
 .account-settings .user-profile h6.user-email {
     margin: 0;
     font-size: 0.8rem;
     font-weight: 400;
     color: #9fa8b9;
 }
+
 .account-settings .about {
     margin: 2rem 0 0 0;
     text-align: center;
 }
+
 .account-settings .about h5 {
     margin: 0 0 15px 0;
     color: #007ae1;
 }
+
 .account-settings .about p {
     font-size: 0.825rem;
 }
+
 .form-control {
     border: 1px solid #cfd1d8;
     -webkit-border-radius: 2px;

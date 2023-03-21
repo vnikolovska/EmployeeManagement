@@ -4,7 +4,6 @@ package wp.com.demo.service.implementation;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import wp.com.demo.model.Company;
-import wp.com.demo.model.Employee;
 import wp.com.demo.model.Intern;
 import wp.com.demo.model.exceptions.InvalidCredentialsException;
 import wp.com.demo.repository.InterRepository;
@@ -30,17 +29,15 @@ public class InternServiceImpl implements InternService {
     }
 
 
-
-
     @Override
-    public Optional<Intern> save(String name, String surname, String embg, String email, String street, String city, String country, String intership_section, String department, LocalDate intership_start, String intership_duration, String phone, Integer projects, Integer intership_salary, Integer experience,MultipartFile profilePicture, String imageSource, Company companyId) {
-        return Optional.of(this.interRepository.save(new Intern(name,surname,embg,email,street,city,country,intership_section,department,intership_start,intership_duration,phone,projects,intership_salary,experience,imageSource,companyId)));
+    public Optional<Intern> save(String name, String surname, String embg, String email, String street, String city, String country, String intership_section, String department, LocalDate intership_start, String intership_duration, String phone, Integer projects, Integer intership_salary, Integer experience, MultipartFile profilePicture, String imageSource, Company companyId) {
+        return Optional.of(this.interRepository.save(new Intern(name, surname, embg, email, street, city, country, intership_section, department, intership_start, intership_duration, phone, projects, intership_salary, experience, imageSource, companyId)));
     }
 
     @Override
-    public Optional<Intern> edit(Long id, String name, String surname, String embg, String email, String street, String city, String country, String intership_section, String department, LocalDate intership_start, String intership_duration, String phone, Integer projects, Integer intership_salary, Integer experience,MultipartFile profilePicture, String imageSource, Company companyId) {
+    public Optional<Intern> edit(Long id, String name, String surname, String embg, String email, String street, String city, String country, String intership_section, String department, LocalDate intership_start, String intership_duration, String phone, Integer projects, Integer intership_salary, Integer experience, MultipartFile profilePicture, String imageSource, Company companyId) {
 
-        Intern intern=this.interRepository.findById(id).orElseThrow(InvalidCredentialsException::new);
+        Intern intern = this.interRepository.findById(id).orElseThrow(InvalidCredentialsException::new);
         intern.setName(name);
         intern.setSurname(surname);
         intern.setEmbg(embg);
@@ -48,14 +45,14 @@ public class InternServiceImpl implements InternService {
         intern.setStreet(street);
         intern.setCity(city);
         intern.setCountry(country);
-        intern.setIntership_section(intership_section);
+        intern.setInternship_section(intership_section);
         intern.setDepartment(department);
-        intern.setIntership_duration(intership_duration);
-        intern.setIntership_start(intership_start);
+        intern.setInternship_duration(intership_duration);
+        intern.setInternship_start(intership_start);
 
         intern.setPhone(phone);
         intern.setProjects(projects);
-        intern.setIntership_salary(intership_salary);
+        intern.setInternship_salary(intership_salary);
         intern.setExperience(experience);
 //        if (!profilePicture.isEmpty())
         intern.setImageSource(imageSource);
@@ -73,8 +70,6 @@ public class InternServiceImpl implements InternService {
     }
 
 
-
-
     @Override
     public void deleteByCompanyId(Company id) {
         this.interRepository.deleteByCompanyId(id);
@@ -82,7 +77,7 @@ public class InternServiceImpl implements InternService {
     }
 
     @Override
-    public List<Intern>listByCompanyId(Company company){
+    public List<Intern> listByCompanyId(Company company) {
         return this.interRepository.findAllByCompanyId(company);
     }
 

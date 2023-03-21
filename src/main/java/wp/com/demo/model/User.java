@@ -2,16 +2,13 @@ package wp.com.demo.model;
 
 
 import lombok.Data;
-import org.hibernate.annotations.ManyToAny;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import wp.com.demo.model.enums.Role;
 
-
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 @Data
 @Entity
@@ -35,13 +32,10 @@ public class User implements UserDetails {
     private Role role;
 
 
-
-
-
     public User() {
     }
 
-    public User(String username ,String email,String password, Role role) {
+    public User(String username, String email, String password, Role role) {
         this.username = username;
         this.password = password;
         this.email = email;

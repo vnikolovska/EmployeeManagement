@@ -9,17 +9,20 @@
                 <div class="col-md-12">
 
 
-                    <form  th:action="@{'/company-profile/add/{id}' (id=${company.getId()})}" method="POST" th:object="${company}" enctype="multipart/form-data" class="col-md-12">
+                    <form th:action="@{'/company-profile/add/{id}' (id=${company.getId()})}" method="POST"
+                          th:object="${company}" enctype="multipart/form-data" class="col-md-12">
 
-                        <input id="id" type="hidden" name="id" th:value="(${company} != null ? ${company.getId()} : '')">
+                        <input id="id" type="hidden" name="id"
+                               th:value="(${company} != null ? ${company.getId()} : '')">
 
-                        <div class="form-group col-lg-6" >
+                        <div class="form-group col-lg-6">
                             <label class="text-uppercase gj-font-size-16"> Company Photo</label>
                             <div runat="server">
                                 <input type="file" class="btn btn-primary text-uppercase form-control" name="image"
                                        th:src="(${company} != null ? ${company.getImageSource()} : '')"
                                        id="imgInp" style="width:50%">
-                                <img th:src="${company.getImageSource()}" alt="image" id="blah" name="image" class="img-thumbnail md-margin-bottom-10"
+                                <img th:src="${company.getImageSource()}" alt="image" id="blah" name="image"
+                                     class="img-thumbnail md-margin-bottom-10"
                                 >
 
                             </div>
@@ -33,7 +36,8 @@
                             </div>
                             <div class="form-group col-lg-12 input-group-lg">
                                 <label for="name">Description</label>
-                                <input id="description" name="description" type="text" class="form-control validate-input"
+                                <input id="description" name="description" type="text"
+                                       class="form-control validate-input"
                                        th:value="(${company} != null ? ${company.getDescription()} : '')">
 
                             </div>
@@ -45,25 +49,26 @@
                             <div class="form-group col-lg-12 input-group-lg">
                                 <label for="name">Owner</label>
                                 <input id="owner" name="owner" type="text" class="form-control validate-input"
-                                       th:value="(${company} != null ? ${company.getOwner()} : '')" >
+                                       th:value="(${company} != null ? ${company.getOwner()} : '')">
                             </div>
                             <div class="form-group col-lg-12 input-group-lg">
                                 <label for="name">Number of Employees</label>
                                 <input id="employees" name="numEmployee" type="text" class="form-control validate-input"
-                                       th:value="(${company} != null ? ${company.getEmployee_num()} : '')" >
+                                       th:value="(${company} != null ? ${company.getEmployee_num()} : '')">
                             </div>
                             <div class="form-group col-lg-12 input-group-lg">
                                 <label for="name">Number of Interns</label>
                                 <input id="interns" name="numInterns" type="text" class="form-control validate-input"
-                                       th:value="(${company} != null ? ${company.getIntern_num()} : '')" >
+                                       th:value="(${company} != null ? ${company.getIntern_num()} : '')">
                             </div>
                             <div class="form-group col-lg-6">
 
-                                <button type="submit" class="btn btn-dark btn-block text-uppercase mb-3" >Save company</button>
-                                <a th:href="@{'/company-profile/{id}' (id=${company.getId()})}" type="reset" class="btn btn-dark" >Cancel</a>
+                                <button type="submit" class="btn btn-dark btn-block text-uppercase mb-3">Save company
+                                </button>
+                                <a th:href="@{'/company-profile/{id}' (id=${company.getId()})}" type="reset"
+                                   class="btn btn-dark">Cancel</a>
 
                             </div>
-
 
 
                         </div>

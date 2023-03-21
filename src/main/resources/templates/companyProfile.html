@@ -6,12 +6,12 @@
                 <div class="profile-bio">
                     <div class="row">
                         <div class="col-md-5 text-center">
-                            <img class="img-thumbnail md-margin-bottom-10"  th:src="${company.getImageSource()}" alt="">
+                            <img class="img-thumbnail md-margin-bottom-10" th:src="${company.getImageSource()}" alt="">
                         </div>
                         <div class="col-md-7 text-center">
                             <div class="">
 
-                                <h2 th:text="${company.getName()}" ></h2>
+                                <h2 th:text="${company.getName()}"></h2>
                             </div>
                             <div>
                                 <h3 th:text="${company.getMoto()}"></h3>
@@ -33,18 +33,20 @@
                             </div>
 
 
-
-                            <th:block sec:authorize="hasRole('ROLE_USER')" th:if="${company.getCompanyUsername() } == ${username}">
+                            <th:block sec:authorize="hasRole('ROLE_USER')"
+                                      th:if="${company.getCompanyUsername() } == ${username}">
 
 
                                 <div class="row">
-                                        <div class="col-md-12 text-right mt-5">
-                                <a th:href="@{'/company-profile/edit/{id}' (id=${company.getId()})}" class="btn btn-md btn-info company-description float-right">Edit</a>
+                                    <div class="col-md-12 text-right mt-5">
+                                        <a th:href="@{'/company-profile/edit/{id}' (id=${company.getId()})}"
+                                           class="btn btn-md btn-info company-description float-right">Edit</a>
 
 
-                                            <a  th:href="@{'/employees/{id}' (id=${company.getId()})}" class="btn btn-md float-right ml-3 btn-info">See employees</a>
+                                        <a th:href="@{'/employees/{id}' (id=${company.getId()})}"
+                                           class="btn btn-md float-right ml-3 btn-info">See employees</a>
 
-                                </div>
+                                    </div>
                                 </div>
 
                             </th:block>
@@ -54,8 +56,6 @@
                     </div>
                 </div>
             </div>
-
-
 
 
         </div>

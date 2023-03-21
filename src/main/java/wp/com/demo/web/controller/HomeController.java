@@ -18,10 +18,10 @@ public class HomeController {
     }
 
     @GetMapping
-    public String getHomePage(HttpServletRequest request,Model model) {
+    public String getHomePage(HttpServletRequest request, Model model) {
 
 
-        if (request.getRemoteUser()!=null && this.userService.findByUsername(request.getRemoteUser()).isPresent()){
+        if (request.getRemoteUser() != null && this.userService.findByUsername(request.getRemoteUser()).isPresent()) {
             model.addAttribute("username", request.getRemoteUser());
         }
         return "home";

@@ -11,7 +11,6 @@ import wp.com.demo.model.Intern;
 import wp.com.demo.service.CompanyService;
 import wp.com.demo.service.EmployeeService;
 import wp.com.demo.service.InternService;
-import wp.com.demo.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -34,7 +33,6 @@ public class CompanyEmployeesAndInternsController {
     }
 
 
-
     @GetMapping("/{id}")
     public String getEmployees_InternsPage(@PathVariable Long id, Model model) {
         if (this.companyService.findById(id).isPresent()) {
@@ -42,9 +40,9 @@ public class CompanyEmployeesAndInternsController {
             Company company = this.companyService.findById(id).get();
             model.addAttribute("company", company);
             List<Employee> employees = this.employeeService.listByCompanyId(company);
-            List<Intern>interns=this.internService.listByCompanyId(company);
+            List<Intern> interns = this.internService.listByCompanyId(company);
             model.addAttribute("employees", employees);
-            model.addAttribute("interns",interns);
+            model.addAttribute("interns", interns);
             model.addAttribute("bodyContent", "Company-employees");
             return "master-template";
         }
@@ -53,22 +51,21 @@ public class CompanyEmployeesAndInternsController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deleteEmployee(@PathVariable Long id,HttpServletRequest request) {
+    public String deleteEmployee(@PathVariable Long id, HttpServletRequest request) {
 
-        String username=request.getRemoteUser();
-        Long companyId =this.companyService.getCompany(username).get().getId();
+        String username = request.getRemoteUser();
+        Long companyId = this.companyService.getCompany(username).get().getId();
         this.employeeService.deleteById(id);
-        return "redirect:/employees/"+companyId;
+        return "redirect:/employees/" + companyId;
     }
 
     @DeleteMapping("/deleteIntern/{id}")
-    public String deleteIntern(@PathVariable Long id,HttpServletRequest request) {
-        String username=request.getRemoteUser();
-        Long companyId =this.companyService.getCompany(username).get().getId();
+    public String deleteIntern(@PathVariable Long id, HttpServletRequest request) {
+        String username = request.getRemoteUser();
+        Long companyId = this.companyService.getCompany(username).get().getId();
         this.internService.deleteById(id);
-        return "redirect:/employees/"+companyId;
+        return "redirect:/employees/" + companyId;
     }
-
 
 
     @GetMapping("/add-employee/{id}")
@@ -80,12 +77,13 @@ public class CompanyEmployeesAndInternsController {
 
 //            Employee employee = this.employeeService.findById(id).get();
 //                model.addAttribute("employee", employee);
-                model.addAttribute("bodyContent", "add-employee");
+            model.addAttribute("bodyContent", "add-employee");
         }
 
         return "master-template";
 
     }
+
     @GetMapping("/add-intern/{id}")
     public String addIntern(@PathVariable Long id, Model model) {
 
@@ -100,8 +98,7 @@ public class CompanyEmployeesAndInternsController {
                 model.addAttribute("bodyContent", "addIntern");
 
 
-            }
-            else {
+            } else {
                 model.addAttribute("bodyContent", "addIntern");
             }
 
@@ -131,37 +128,32 @@ public class CompanyEmployeesAndInternsController {
             @RequestParam Integer experience,
             @RequestParam("personImage") MultipartFile profilePicture) throws IOException {
 
-            Company company = this.companyService.findById(id).get();
+        Company company = this.companyService.findById(id).get();
 
-            if (!profilePicture.isEmpty()) {
-                File picture_target = new File(profilePicture.getOriginalFilename());
+        if (!profilePicture.isEmpty()) {
+            File picture_target = new File(profilePicture.getOriginalFilename());
 //                    (targetFolderImagePPPath + request.getRemoteUser() + "." + profilePicture.getOriginalFilename().split("\\.")[1]);
-                if (picture_target.exists()) {
-                    picture_target.delete();
-
-                }
-
-                profilePicture.transferTo(picture_target);
-              this.internService.save(name,surname,embg,email,street,city,country,internship_section,department,internship_start,intership_duration,phone,
-                      projects,internship_salary,experience,profilePicture,"../ProfilePictures/" +picture_target.getName(),company);
-
-
-
-
-            } else {
-
-
-                this.internService.save(name,surname,embg,email,street,city,country,internship_section,department,internship_start,intership_duration,phone,
-                        projects,internship_salary,experience,profilePicture,"../ProfilePictures/",company);
+            if (picture_target.exists()) {
+                picture_target.delete();
 
             }
 
+            profilePicture.transferTo(picture_target);
+            this.internService.save(name, surname, embg, email, street, city, country, internship_section, department, internship_start, intership_duration, phone,
+                    projects, internship_salary, experience, profilePicture, "../ProfilePictures/" + picture_target.getName(), company);
 
-            return"redirect:/employees/{id}";
-}
+
+        } else {
 
 
+            this.internService.save(name, surname, embg, email, street, city, country, internship_section, department, internship_start, intership_duration, phone,
+                    projects, internship_salary, experience, profilePicture, "../ProfilePictures/", company);
 
+        }
+
+
+        return "redirect:/employees/{id}";
+    }
 
 
     @PostMapping("/add/{id}")
@@ -188,7 +180,6 @@ public class CompanyEmployeesAndInternsController {
         Company company = this.companyService.findById(id).get();
 
 
-
         if (!profilePicture.isEmpty()) {
             File picture_target = new File(profilePicture.getOriginalFilename());
 //                    (targetFolderImagePPPath + request.getRemoteUser() + "." + profilePicture.getOriginalFilename().split("\\.")[1]);
@@ -198,10 +189,8 @@ public class CompanyEmployeesAndInternsController {
             }
 
             profilePicture.transferTo(picture_target);
-            this.employeeService.save(company, name, surname, profilePicture, "../ProfilePictures/" +picture_target.getName(), embg, email, street, city, country, jobTitle, department, employmentDate, status,
+            this.employeeService.save(company, name, surname, profilePicture, "../ProfilePictures/" + picture_target.getName(), embg, email, street, city, country, jobTitle, department, employmentDate, status,
                     phone, projects, salary, experience);
-
-
 
 
         } else {
@@ -209,14 +198,11 @@ public class CompanyEmployeesAndInternsController {
                     phone, projects, salary, experience);
 
 
-
         }
 
 
-        return"redirect:/employees/{id}";
+        return "redirect:/employees/{id}";
     }
-
-
 
 
 }

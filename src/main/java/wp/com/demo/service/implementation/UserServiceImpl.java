@@ -7,7 +7,10 @@ import org.springframework.stereotype.Service;
 import wp.com.demo.model.Company;
 import wp.com.demo.model.User;
 import wp.com.demo.model.enums.Role;
-import wp.com.demo.model.exceptions.*;
+import wp.com.demo.model.exceptions.EmailAlreadyAssociatedException;
+import wp.com.demo.model.exceptions.InvalidCredentialsException;
+import wp.com.demo.model.exceptions.PasswordsDoNotMatchException;
+import wp.com.demo.model.exceptions.UsernameExistsException;
 import wp.com.demo.repository.CompanyRepository;
 import wp.com.demo.repository.UserRepository;
 import wp.com.demo.service.UserService;
@@ -29,27 +32,26 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User register(String username, String email,String password, String repeatPassword,Role role) {
-        if(username==null || username.isEmpty()|| password==null|| password.isEmpty() || email==null || email.isEmpty())
+    public User register(String username, String email, String password, String repeatPassword, Role role) {
+        if (username == null || username.isEmpty() || password == null || password.isEmpty() || email == null || email.isEmpty())
             throw new InvalidCredentialsException();
         if (!password.equals(repeatPassword))
             throw new PasswordsDoNotMatchException();
 
         if (this.userRepository.existsByEmail(email)) throw new EmailAlreadyAssociatedException(email);
 
-        if(this.userRepository.existsByUsername(username)) throw new UsernameExistsException(username);
+        if (this.userRepository.existsByUsername(username)) throw new UsernameExistsException(username);
 
         if (this.userRepository.findByUsername(username).isPresent())
             throw new UsernameExistsException(username);
 
-        User user=new User(username,email,passwordEncoder.encode(password),role);
+        User user = new User(username, email, passwordEncoder.encode(password), role);
 
-            Company company = new Company(username, username, null, null, null, null, null, null);
+        Company company = new Company(username, username, null, null, null, null, null, null);
         this.companyRepository.save(company);
 
-            return userRepository.save(user);
-        }
-
+        return userRepository.save(user);
+    }
 
 
     @Override
@@ -59,20 +61,17 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
     @Override
     public User getUsername(String username) {
 
-        return this.userRepository.findByUsername(username).orElseThrow(()->new UsernameNotFoundException(username));
+        return this.userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
     }
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return userRepository.findByUsername(s).orElseThrow(()->new UsernameNotFoundException(s));
+        return userRepository.findByUsername(s).orElseThrow(() -> new UsernameNotFoundException(s));
 
     }
-
-
 
 
 }

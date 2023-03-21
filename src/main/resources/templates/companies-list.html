@@ -2,70 +2,70 @@
 
 
     <!-- Company area start -->
-        <div class="courses-area section-padding40 fix">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-7 col-lg-8">
-                        <div class="section-tittle text-center mb-55">
-                            <h1 class="uppercase font-weight-bold gj-font-size-16">Companies</h1>
-                        </div>
+    <div class="courses-area section-padding40 fix">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-7 col-lg-8">
+                    <div class="section-tittle text-center mb-55">
+                        <h1 class="uppercase font-weight-bold gj-font-size-16">Companies</h1>
                     </div>
                 </div>
+            </div>
 
-                <div class="row" th:if="${companies.size()>0}">
-                    <input id="id" type="hidden" name="id" th:value="(${company} != null ? ${company.getId()} : '')">
+            <div class="row" th:if="${companies.size()>0}">
+                <input id="id" type="hidden" name="id" th:value="(${company} != null ? ${company.getId()} : '')">
 
-                    <div class="col-lg-4" th:each="company:${companies}">
-                        <div class="properties properties2 mb-30 company" >
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
+                <div class="col-lg-4" th:each="company:${companies}">
+                    <div class="properties properties2 mb-30 company">
+                        <div class="properties__card">
+                            <div class="properties__img overlay1">
 
-                                    <img th:src="${company.getImageSource()}" alt="image" name="image">
-                                </div>
-                                <div class="properties__caption align-center">
-                                    <h3 th:text="${company.getName()}"></h3>
-
-
-                                    <h5 th:text="${company.getMoto()}"></h5>
-
-                                   <a th:href="@{'/company-profile/{id}' (id=${company.getId()})}" class="btn btn-lg btn-info add company-description">
-
-
-                                        Read More
-                                    </a>
-
-
-
-                                 <th:block sec:authorize="hasRole('ROLE_ADMIN')">
-                                        <form th:action="@{'/manage-companies/delete/{id}' (id=${company.getId()})}" th:method="DELETE">
-                                            <button type="submit" class="btn-danger btn btn-dark delete-company">
-                                                <i class="fa fa-trash">Delete</i>
-                                            </button>
-                                        </form>
-                                    </th:block>
-
-                                </div>
+                                <img th:src="${company.getImageSource()}" alt="image" name="image">
                             </div>
+                            <div class="properties__caption align-center">
+                                <h3 th:text="${company.getName()}"></h3>
 
+
+                                <h5 th:text="${company.getMoto()}"></h5>
+
+                                <a th:href="@{'/company-profile/{id}' (id=${company.getId()})}"
+                                   class="btn btn-lg btn-info add company-description">
+
+
+                                    Read More
+                                </a>
+
+
+                                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <form th:action="@{'/manage-companies/delete/{id}' (id=${company.getId()})}"
+                                          th:method="DELETE">
+                                        <button type="submit" class="btn-danger btn btn-dark delete-company">
+                                            <i class="fa fa-trash">Delete</i>
+                                        </button>
+                                    </form>
+                                </th:block>
+
+                            </div>
                         </div>
+
                     </div>
                 </div>
+            </div>
 
 
-
-                <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8">
                         <div class="section-tittle text-center mt-40">
-                            <a href="/manage-companies/add-company"  class="border-btn  add">Add new company</a>
+                            <a href="/manage-companies/add-company" class="border-btn  add">Add new company</a>
                         </div>
                     </div>
                 </div>
-                </th:block>
-            </div>
+            </th:block>
         </div>
-        <!-- Companies area End -->
-    <div id="back-top" >
+    </div>
+    <!-- Companies area End -->
+    <div id="back-top">
         <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
     </div>
 </section>

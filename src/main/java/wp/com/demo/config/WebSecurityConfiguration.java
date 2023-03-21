@@ -28,8 +28,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/home", "/register", "/login","/about-us").permitAll()
-                .antMatchers("/css/**", "/fonts/**", "/images/**", "/js/**", "/vendor/**","/assets/**","/syntax-highlighter/**").permitAll()
+                .antMatchers("/", "/home", "/register", "/login", "/about-us").permitAll()
+                .antMatchers("/css/**", "/fonts/**", "/images/**", "/js/**", "/vendor/**", "/assets/**", "/syntax-highlighter/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -51,13 +51,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-                auth.inMemoryAuthentication()
-                .withUser("viktorija.nikolovska")
-                .password(passwordEncoder.encode("vn"))
-                .authorities("ROLE_ADMIN")
-                .and()
-                .withUser("marija.mitrikeska")
-                .password(passwordEncoder.encode("mm"))
+        auth.inMemoryAuthentication()
+                .withUser("admin")
+                .password(passwordEncoder.encode("admin523"))
                 .authorities("ROLE_ADMIN");
 
 

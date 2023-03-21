@@ -8,11 +8,11 @@ import wp.com.demo.model.Intern;
 import java.util.List;
 
 @Repository
-public interface InterRepository extends JpaRepository<Intern,Long> {
+public interface InterRepository extends JpaRepository<Intern, Long> {
 
     void deleteById(Long id);
 
     void deleteByCompanyId(Company company);
 
-    List<Intern>findAllByCompanyId(Company company);
+    List<Intern> findAllByCompanyId(Company company);
 }

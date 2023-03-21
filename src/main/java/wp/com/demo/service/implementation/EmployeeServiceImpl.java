@@ -5,10 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 import wp.com.demo.model.Company;
 import wp.com.demo.model.Employee;
 import wp.com.demo.model.exceptions.EmployeeNotFoundException;
-import wp.com.demo.model.exceptions.InvalidCredentialsException;
-
 import wp.com.demo.repository.EmployeeRepository;
-
 import wp.com.demo.service.EmployeeService;
 
 import javax.transaction.Transactional;
@@ -37,21 +34,20 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional
-    public Optional<Employee> save(Company companyId,String name, String surname,MultipartFile profilePicture,String imageSource, String embg, String email, String street, String city, String country, String jobTitle, String department, LocalDate employmentDate, String status,
+    public Optional<Employee> save(Company companyId, String name, String surname, MultipartFile profilePicture, String imageSource, String embg, String email, String street, String city, String country, String jobTitle, String department, LocalDate employmentDate, String status,
                                    String phone, Integer projects, Integer salary, Integer experience) {
 
-        return Optional.of(this.employeeRepository.save(new Employee(companyId,name, surname, imageSource,embg, email,street, city, country, jobTitle, department, employmentDate,status,
+        return Optional.of(this.employeeRepository.save(new Employee(companyId, name, surname, imageSource, embg, email, street, city, country, jobTitle, department, employmentDate, status,
                 phone, projects, salary, experience)));
 
     }
 
 
-
     @Override
     @Transactional
-    public Optional<Employee> edit(Long id,Company companyId, String name, String surname, MultipartFile profilePicture, String imageSource, String embg, String email, String street, String city, String country, String jobTitle, String department, LocalDate employmentDate, String status,
+    public Optional<Employee> edit(Long id, Company companyId, String name, String surname, MultipartFile profilePicture, String imageSource, String embg, String email, String street, String city, String country, String jobTitle, String department, LocalDate employmentDate, String status,
                                    String phone, Integer projects, Integer salary, Integer experience) {
-        Employee employee=this.employeeRepository.findById(id).orElseThrow(()-> new EmployeeNotFoundException(id));
+        Employee employee = this.employeeRepository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id));
 
         employee.setName(name);
         employee.setSurname(surname);
@@ -69,7 +65,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setSalary(salary);
         employee.setExperience(experience);
 //        if (!profilePicture.isEmpty())
-            employee.setImageSource(imageSource);
+        employee.setImageSource(imageSource);
 
         return Optional.of(this.employeeRepository.save(employee));
 
@@ -97,7 +93,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee findCompanyId(Company companyId) {
 
-        return  this.employeeRepository.findByCompanyId(companyId);
+        return this.employeeRepository.findByCompanyId(companyId);
     }
 
     @Override
@@ -107,11 +103,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<Employee>listByCompanyId(Company company){
+    public List<Employee> listByCompanyId(Company company) {
         return this.employeeRepository.findAllByCompanyId(company);
     }
-
-
 
 
 }

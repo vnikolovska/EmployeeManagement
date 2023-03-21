@@ -1,19 +1,14 @@
 package wp.com.demo.service.implementation;
 
 
-
-
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import wp.com.demo.model.Company;
 import wp.com.demo.model.Employee;
-
 import wp.com.demo.model.exceptions.CompanyNotFoundException;
 import wp.com.demo.model.exceptions.EmployeesNotFound;
 import wp.com.demo.repository.CompanyRepository;
-
 import wp.com.demo.service.CompanyService;
-
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -21,7 +16,7 @@ import java.util.Optional;
 
 
 @Service
-public class CompanyServiceImpl  implements CompanyService {
+public class CompanyServiceImpl implements CompanyService {
     private final CompanyRepository companyRepository;
 
 
@@ -48,6 +43,7 @@ public class CompanyServiceImpl  implements CompanyService {
 //        return null;
 //    }
 
+    //TODO search bar for employees
     @Override
     public List<Company> searchEmployees(String search) {
         return null;
@@ -60,29 +56,27 @@ public class CompanyServiceImpl  implements CompanyService {
     }
 
 
-
-
     @Override
     @Transactional
-    public Optional<Company> edit(String user,Long id, String name, String desc ,String owner, String moto, MultipartFile profilePicture,String imageSource, Integer numEm,Integer numInt) {
-       Company company=this.companyRepository.findById(id).orElseThrow( ()-> new CompanyNotFoundException(id));
+    public Optional<Company> edit(String user, Long id, String name, String desc, String owner, String moto, MultipartFile profilePicture, String imageSource, Integer numEm, Integer numInt) {
+        Company company = this.companyRepository.findById(id).orElseThrow(() -> new CompanyNotFoundException(id));
 
-   company.setName(name);
-   company.setDescription(desc);
-   company.setMoto(moto);
-   company.setEmployee_num(numEm);
-   company.setIntern_num(numInt);
-   company.setOwner(owner);
+        company.setName(name);
+        company.setDescription(desc);
+        company.setMoto(moto);
+        company.setEmployee_num(numEm);
+        company.setIntern_num(numInt);
+        company.setOwner(owner);
 
-   if (!profilePicture.isEmpty()) company.setImageSource(imageSource);
+        if (!profilePicture.isEmpty()) company.setImageSource(imageSource);
 
-   return Optional.of(this.companyRepository.save(company));
+        return Optional.of(this.companyRepository.save(company));
 
     }
 
     @Override
-    public Optional<Company> save(String  user,String name, String desc ,String owner, String moto,  MultipartFile profilePicture,String imageSource,Integer numEm, Integer numInt) {
-      return Optional.of(this.companyRepository.save(new Company(user,name,desc,owner,moto,imageSource,numEm,numInt)));
+    public Optional<Company> save(String user, String name, String desc, String owner, String moto, MultipartFile profilePicture, String imageSource, Integer numEm, Integer numInt) {
+        return Optional.of(this.companyRepository.save(new Company(user, name, desc, owner, moto, imageSource, numEm, numInt)));
     }
 
     @Override
@@ -90,8 +84,6 @@ public class CompanyServiceImpl  implements CompanyService {
 
         return this.companyRepository.findById(id);
     }
-
-
 
 
     @Override
@@ -109,6 +101,6 @@ public class CompanyServiceImpl  implements CompanyService {
                 return this.companyRepository.findById(companyId).get().getEmployees();
         }
 
-          throw new EmployeesNotFound(companyId);
+        throw new EmployeesNotFound(companyId);
     }
 }

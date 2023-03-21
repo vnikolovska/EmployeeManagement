@@ -1,10 +1,8 @@
 package wp.com.demo.model;
 
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -25,7 +23,7 @@ public class Company {
     private Integer intern_num;
 
 
-    private  String companyUsername;
+    private String companyUsername;
 
 
     private String imageSource;
@@ -37,12 +35,10 @@ public class Company {
     private List<Intern> interns;
 
 
-
-
     public Company() {
     }
 
-    public Company( String companyUsername,String name, String description, String moto, String owner,  String imageSource,Integer employee_num, Integer intern_num) {
+    public Company(String companyUsername, String name, String description, String moto, String owner, String imageSource, Integer employee_num, Integer intern_num) {
 
         this.name = name;
         this.description = description;
@@ -50,8 +46,8 @@ public class Company {
         this.owner = owner;
         this.employee_num = employee_num;
         this.intern_num = intern_num;
-        this.imageSource=imageSource;
-        this.companyUsername=companyUsername;
+        this.imageSource = imageSource;
+        this.companyUsername = companyUsername;
 
     }
 }
